@@ -63,6 +63,16 @@ const useStyles = makeStyles((theme) => ({
 
 const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
+const onClick = () => {
+  const event = new CustomEvent('marketingAppPricingClicked', 
+    { detail: {
+      newCount: Math.random()
+    } }
+  );
+
+  dispatchEvent(event);
+};
+
 export default function Album() {
   const classes = useStyles();
 
@@ -94,7 +104,7 @@ export default function Album() {
             <div className={classes.heroButtons}>
               <Grid container spacing={2} justify="center">
                 <Grid item>
-                  <Link to="/pricing">
+                  <Link to="/pricing" onClick={onClick}>
                     <Button variant="contained" color="primary">
                       Pricing
                     </Button>
