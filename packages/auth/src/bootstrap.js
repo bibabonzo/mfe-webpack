@@ -13,12 +13,13 @@ export const mount = (el, { onNavigate, defaultHistory, initialPath }) => {
   }
 
   ReactDOM.render(
-    <App history={ history } />,
+    <App history={history} />,
     el
   );
 
   return {
     onParentNavigate({ pathname: nextPathname }) {
+      console.log('auth', nextPathname)
       const { pathname } = history.location;
 
       if (pathname !== nextPathname) {
@@ -29,7 +30,7 @@ export const mount = (el, { onNavigate, defaultHistory, initialPath }) => {
 };
 
 if (process.env.NODE_ENV === 'development') {
-  const devRoot = document.querySelector('#_marketing-dev-root');
+  const devRoot = document.querySelector('#_auth-dev-root');
 
   if (devRoot) {
     mount(devRoot, { defaultHistory: createBrowserHistory() });
