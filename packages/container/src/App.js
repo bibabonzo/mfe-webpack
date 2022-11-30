@@ -12,6 +12,7 @@ const generateClassName = createGenerateClassName({
 })
 
 export default () => {
+    const [isSignedIn, setIsSignedIn] = useState(false);
   const [count, setCount] = useState(0);
 
   useEffect(() => {
@@ -29,10 +30,12 @@ export default () => {
       <BrowserRouter>
           <StylesProvider generateClassName={generateClassName}>
               <div>
-                  <Header />
+                  <Header onSignOut={() => setIsSignedIn(false)} isSignedIn={isSignedIn} />
                   <Suspense fallback={<Progress />}>
                       <Switch>
-                          <Route path="/auth" component={AuthAppLazy} />
+                          <Route path="/auth">
+                              <AuthAppLazy onSignIn={() => setIsSignedIn(true)} />
+                          </Route>
                           <Route path="/" component={MarketingAppLazy} />
                       </Switch>
                   </Suspense>
