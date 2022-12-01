@@ -1,7 +1,7 @@
 const { VueLoaderPlugin } = require("vue-loader");
 
 module.exports = {
-  entry: './scr/index.js',
+  entry: './src/index.js',
   output: {
     filename: '[name].[contenthash].js',
   },
