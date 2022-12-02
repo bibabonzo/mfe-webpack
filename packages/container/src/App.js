@@ -18,12 +18,39 @@ const history = createBrowserHistory();
 export default () => {
     const [isSignedIn, setIsSignedIn] = useState(false);
     const [count, setCount] = useState(0);
+    const userEvent = new CustomEvent('user', {
+        isSignedIn: isSignedIn
+    });
+
+    useEffect(() => {
+        window.addEventListener(
+            "marketingAppPricingClicked",
+            (data) => {
+                const { newCount } = data.detail;
+
+                setCount(newCount);
+
+                console.log(newCount);
+            }
+        );
+    }, []);
 
     useEffect(() => {
         if (isSignedIn) {
             history.push('/dashboard');
         }
     }, [isSignedIn]);
+
+    useEffect(() => {
+        window.addEventListener(
+            "userStatus",
+            (data) => {
+                const { isSignedIn } = data.isSignedIn;
+
+                console.log('User status: ', isSignedIn);
+            }
+        );
+    }, []);
 
     return (
         <Router history={history}>
@@ -36,7 +63,7 @@ export default () => {
                                 <AuthAppLazy onSignIn={() => setIsSignedIn(true)}/>
                             </Route>
                             <Route path={"/dashboard"}>
-                                {!isSignedIn && <Redirect to="/"/>}
+                                {!isSignedIn && <Redirect to="/" />}
                                 <DashboardLazy/>
                             </Route>
                             <Route path="/" component={MarketingAppLazy}/>
