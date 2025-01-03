@@ -113,10 +113,10 @@
         <div class="p-grid">
           <div class="p-col-12">
             <Dropdown
-              v-model="dropdownCity"
-              :options="dropdownCities"
-              optionLabel="name"
-              placeholder="Select a City"
+                v-model="dropdownCity"
+                :options="dropdownCities"
+                optionLabel="name"
+                placeholder="Select a City"
             />
           </div>
           <div class="p-col-12">
@@ -203,19 +203,19 @@
       <div class="card">
         <h1 style="font-size: 16px">Recent Sales</h1>
         <DataTable
-          :value="products"
-          class="p-datatable-customers"
-          :rows="5"
-          style="margin-bottom: 20px"
-          :paginator="true"
+            :value="products"
+            class="p-datatable-customers"
+            :rows="5"
+            style="margin-bottom: 20px"
+            :paginator="true"
         >
           <Column>
             <template #header> Logo </template>
             <template #body="slotProps">
               <img
-                :src="'assets/layout/images/product/' + slotProps.data.image"
-                :alt="slotProps.data.image"
-                width="50"
+                  :src="'assets/layout/images/product/' + slotProps.data.image"
+                  :alt="slotProps.data.image"
+                  width="50"
               />
             </template>
           </Column>
@@ -230,14 +230,14 @@
             <template #header> View </template>
             <template #body>
               <Button
-                icon="pi pi-search"
-                type="button"
-                class="p-button-success p-mr-2 p-mb-1"
+                  icon="pi pi-search"
+                  type="button"
+                  class="p-button-success p-mr-2 p-mb-1"
               ></Button>
               <Button
-                icon="pi pi-times"
-                type="button"
-                class="p-button-danger p-mb-1"
+                  icon="pi pi-times"
+                  type="button"
+                  class="p-button-danger p-mb-1"
               ></Button>
             </template>
           </Column>
@@ -565,7 +565,7 @@ p {
 $footerBgColor: #ffffff;
 .dashboard {
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica,
-    Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
+  Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
   background-color: #edf0f5;
   .summary {
     position: relative;
